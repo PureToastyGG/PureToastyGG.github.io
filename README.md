@@ -1,10 +1,7 @@
 <!Doctype Html>  
 <Html>     
 <Head>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">      
-<Title>     
-Make a Navigation Bar  
-</Title>    
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">         
 </Head>  
 <Body>   
 <header>  
