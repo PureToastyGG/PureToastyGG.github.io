@@ -4,39 +4,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">      
 <Title>     
 Make a Navigation Bar  
-</Title>  
-<style type=text/css>   
-body   
-{  
-height: 125vh;  
-margin-top: 80px;  
-padding: 30px;  
-background-size: cover;  
-font-family: sans-serif; 
-background-color: rgb(227, 255, 184);  
-}  
-header {  
-background-color: greenyellow;  
-position: fixed;  
-left: 0;  
-right: 0;  
-top: 5px;  
-height: 30px;  
-display: flex;  
-align-items: center;  
-box-shadow: 0 0 25px 0 black;  
-}  
-header * {  
-display: inline;  
-}  
-header li {  
-margin: 20px;  
-}  
-header li a {  
-color: black;  
-text-decoration: none;  
-}  
-</style>  
+</Title>    
 </Head>  
 <Body>   
 <header>  
