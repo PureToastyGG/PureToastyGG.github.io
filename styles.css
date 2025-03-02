@@ -1,0 +1,51 @@
+.body-class{
+    background-color: moccasin;
+}
+
+.header-class{ 
+    background-color: maroon;
+    color: moccasin;
+}
+
+a.nav-class{ 
+    background-color: paleturquoise;
+    color: turquoise;
+
+}
+
+.nav-link-class{ 
+    color:rosybrown;
+}
+
+.active-link{ 
+    color:rosybrown; 
+    font-weight: bold;
+}
+
+.section-title-class{ 
+        color: maroon;
+    }
+
+
+.text-class{ 
+    color: darkred;
+}
+
+.image-class{ 
+    border: 5px solid maroon;
+    border-image-width: auto;
+}
+
+.form-class{ 
+    color: darkred;
+}
+
+.button-class{ 
+    background-color: lightgray;
+    color: maroon;
+}
+
+.footer-class{ 
+    background-color: maroon;
+    color:beige;
+}
