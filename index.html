@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rocket League Invintational Updates</title>
+  <title>Rocket League Invitational Updates</title>
   <style>
     body {
       margin: 0;
@@ -20,10 +20,12 @@
     }
 
     main {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-direction: column;
       gap: 2em;
       padding: 2em;
+      max-width: 1200px;
+      margin: auto;
     }
 
     section {
@@ -49,9 +51,14 @@
     }
 
     .leaderboards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      flex-wrap: wrap;
       gap: 1em;
+    }
+
+    .leaderboards > div {
+      flex: 1;
+      min-width: 250px;
     }
 
     video {
@@ -59,25 +66,34 @@
       border-radius: 10px;
       margin-top: 1em;
     }
+
+    form {
+      margin-bottom: 1em;
+    }
+
+    a {
+      color: #66fcf1;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Rocket League Invintational</h1>
+    <h1>Rocket League Invitational</h1>
   </header>
 
-  <!--<section>
-    <h2>Last Weeks MVP</h2>
-    <p><strong>Gatman40</strong> - 4 goals, 2 assists, 4 saves</p>
-  !-->
   <main>
     <section>
       <h2>News</h2>
-      <p><strong>Week 1 Recap:</strong> For the first game of the season between the Knigths and the Monarchs we start with an exciting first game! The Knights snuck away with game one in a 2-1 overtime win. Then following this with an overwhelming performance ending the second game 8-2!</p>
+      <p><strong>Week 1 Recap:</strong> For the first game of the season between the Knights and the Monarchs we start with an exciting first game! The Knights snuck away with game one in a 2-1 overtime win. Then following this with an overwhelming performance ending the second game 8-2!</p>
     </section>
 
     <section>
-      <h2>This Weeks Matchups</h2>
+      <h2>This Week's Matchups</h2>
       <ul>
         <li>Knights Versus Monarchs: 2 - 0 (K)</li>
         <li>Cyclones Versus Kodiaks: TBD</li>
@@ -92,8 +108,9 @@
         <li>Cyclones Versus Kodiaks: TBD</li>
         <li>Dragons Versus Phantoms: TBD</li>
       </ul>
+    </section>
 
-    <section style="grid-column: span 2;">
+    <section>
       <h2>Play of the Week</h2>
       <form>
         <input type="file" accept="video/*" />
@@ -103,9 +120,8 @@
         Your browser does not support the video tag.
       </video>
     </section>
-    
-    
-    <section class="leaderboards" style="grid-column: span 2;">
+
+    <section class="leaderboards">
       <div>
         <h2>Top Goals</h2>
         <ul>
@@ -135,16 +151,15 @@
     </section>
 
     <section>
-      <h2>This Weeks Matchups</h2>
+      <h2>Team Standings</h2>
       <ul>
-        <li>Knights: 1 - 0</li>
-        <li>Cyclones: 0 - 0</li>
-        <li>Dragons: 0 - 0</li>
-        <li>Kodiaks: 0 - 0</li>
-        <li>Phantoms: 0 - 0</li>
-        <li>Monarchs: 0 - 1</li>
+        <li><a href="Knights_Stats.html">Knights</a>: 1 - 0</li>
+        <li><a href="Cyclones_Stats.html">Cyclones</a>: 0 - 0</li>
+        <li><a href="Dragons_Stats.html">Dragons</a>: 0 - 0</li>
+        <li><a href="Kodiaks_Stats.html">Kodiaks</a>: 0 - 0</li>
+        <li><a href="Phantoms_Stats.html">Phantoms</a>: 0 - 0</li>
+        <li><a href="Monarchs_Stats.html">Monarchs</a>: 0 - 1</li>
       </ul>
-
     </section>
   </main>
 </body>
