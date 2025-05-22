@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Kodiaks Stats Page</title>
+  <style>
+    :root {
+      --primary-color: #fff23b; /* Edit this to change primary color */
+      --secondary-color: #44ddff; /* Edit this to change background color */
+      --text-color: #141414;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: var(--secondary-color);
+      color: var(--text-color);
+    }
+
+    header {
+      background-color: var(--primary-color);
+      padding: 20px;
+      text-align: center;
+    }
+
+    header img {
+      max-height: 100px;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 5px;
+    }
+
+    .match {
+      margin-bottom: 15px;
+    }
+
+    .player {
+      margin-bottom: 15px;
+    }
+
+    .video-link {
+      display: inline-block;
+      margin-top: 5px;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .video-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Team Logo">
+  </header>
+
+  <main>
+    <section id="match-history">
+      <h2>Match History</h2>
+      <div class="match">
+        <strong>Opponent:</strong> Dragons<br>
+        <strong>Score:</strong> 0-0<br>
+        <a class="video-link" href="https://example.com/video1" target="_blank">Watch Game</a>
+      </div>
+      <div class="match">
+        <strong>Opponent:</strong> Team B<br>
+        <strong>Score:</strong> 0-0<br>
+        <a class="video-link" href="https://example.com/video2" target="_blank">Watch Game</a>
+      </div>
+    </section>
+
+    <section id="player-stats">
+      <h2>Player Stats</h2>
+      <div class="player">
+        <strong>BytesTruckDad</strong><br>
+        Goals: 0<br>
+        Assists: 0<br>
+        Saves: 0
+      </div>
+      <div class="player">
+        <strong>Cole</strong><br>
+        Goals: 0<br>
+        Assists: 0<br>
+        Saves: 0
+      </div>
+      <div class="player">
+        <strong>Duck</strong><br>
+        Goals: 0<br>
+        Assists: 0<br>
+        Saves: 0
+      </div>
+    </section>
+
+    <section id="player-stats">
+      <h2>Star Player</h2>
+      <div class="player">
+        <strong>N/A</strong><br> 
+        <strong>Accolade: N/A</strong><br>
+    </section>
+  </main>
+</body>
+</html>
