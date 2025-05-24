@@ -94,10 +94,11 @@
           .filter(row => row[1].trim() === teamName)
           .map(row => ({
             team: row[1],
-            player: row[0],
-            goals: parseInt(row[2], 10),
-            assists: parseInt(row[3], 10),
-            saves: parseInt(row[4], 10)
+            player: row[0], 
+            points: parseInt(row[2], 10),
+            goals: parseInt(row[3], 10),
+            assists: parseInt(row[4], 10),
+            saves: parseInt(row[5], 10)
           }));
 
         const container = document.getElementById("stats-container");
@@ -114,7 +115,7 @@
         });
 
         // Optional: Determine Star Player (highest goals)
-        const star = players.reduce((top, p) => p.goals > top.goals ? p : top, players[0]);
+        const star = players.reduce((top, p) => p.points > top.points ? p : top, players[0]);
         document.getElementById("star-player-container").innerHTML = `
           <strong>${star.player}</strong><br>
           <strong>Accolade: Striker (${star.goals} goals)</strong><br>
