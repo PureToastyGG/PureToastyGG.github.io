@@ -91,10 +91,10 @@
 
         const players = lines.slice(1)
           .map(line => line.split(","))
-          .filter(row => row[0].trim() === teamName)
+          .filter(row => row[1].trim() === teamName)
           .map(row => ({
-            team: row[0],
-            player: row[1],
+            team: row[1],
+            player: row[0],
             goals: parseInt(row[2], 10),
             assists: parseInt(row[3], 10),
             saves: parseInt(row[4], 10)
