@@ -82,34 +82,73 @@
       </div>
     </section>
 
-    <section id="player-stats">
+ <section id="player-stats">
       <h2>Player Stats</h2>
-      <div class="player">
-        <strong>Jarzy</strong><br>
-        Goals: 0<br>
-        Assists: 0<br>
-        Saves: 0
-      </div>
-      <div class="player">
-        <strong>Shaf</strong><br>
-        Goals: 0<br>
-        Assists: 0<br>
-        Saves: 0
-      </div>
-      <div class="player">
-        <strong>Aidan</strong><br>
-        Goals: 0<br>
-        Assists: 0<br>
-        Saves: 0
-      </div>
+      <div id="stats-container"></div>
     </section>
 
-    <section id="player-stats">
+    <section id="star-player">
       <h2>Star Player</h2>
-      <div class="player">
-        <strong>N/A</strong><br> 
-        <strong>Accolade: N/A</strong><br>
+      <div class="player" id="star-player-container"></div>
     </section>
   </main>
+
+  <script>
+    const teamName = "Phantoms"; // Adjust this per team page
+
+    fetch("Raw Scarab Series stats - Week 1.csv")
+      .then(response => response.text())
+      .then(csv => {
+        const lines = csv.trim().split("\n");
+        const headers = lines[0].split(",");
+
+        const players = lines.slice(1)
+          .map(line => line.split(","))
+          .filter(row => row[1].trim() === teamName)
+          .map(row => ({
+            team: row[1],
+            player: row[0], 
+            points: parseInt(row[2], 10),
+            goals: parseInt(row[3], 10),
+            assists: parseInt(row[4], 10),
+            saves: parseInt(row[5], 10)
+          }));
+
+        const container = document.getElementById("stats-container");
+        players.forEach(p => {
+          const div = document.createElement("div");
+          div.className = "player";
+          div.innerHTML = `
+            <strong>${p.player}</strong><br>
+            Goals: ${p.goals}<br>
+            Assists: ${p.assists}<br>
+            Saves: ${p.saves}
+          `;
+          container.appendChild(div);
+        });
+
+        // Optional: Determine Star Player (highest points) 
+        if (players.length > 0) {
+          const star = players.reduce((top, p) => p.points > top.points ? p : top, players[0]); 
+          //Determine the top stat for accolade 
+          let accolade = ""; 
+          if (star.goals >= star.assists && star.goals >= star.saves){
+            accolade = "Striker";
+          } else if (star.assists >= star.gaols && star.assists >= star.saves){
+            accolade = "Playermaker";
+          } else if (star.saves >= star.goals && star.saves >= star.assists){
+            accolade = "Guardian";
+          }
+          
+          document.getElementById("star-player-container").innerHTML = `
+            <strong>${star.player}</strong><br>
+            <strong>Accolade: ${accolade} (${star.points} points)</strong><br>
+            Goals: ${star.goals}, Assists: ${star.assists}, Saves: ${star.saves}
+          `;
+      } else {
+        document.getElementById("star-player-container").innerHTML = "No player data found for Phantoms.";
+      }
+      });
+  </script>
 </body>
 </html>
