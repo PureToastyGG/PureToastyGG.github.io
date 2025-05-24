@@ -114,12 +114,27 @@
           container.appendChild(div);
         });
 
-        // Optional: Determine Star Player (highest goals)
-        const star = players.reduce((top, p) => p.points > top.points ? p : top, players[0]);
-        document.getElementById("star-player-container").innerHTML = `
-          <strong>${star.player}</strong><br>
-          <strong>Accolade: Striker (${star.goals} goals)</strong><br>
-        `;
+        // Optional: Determine Star Player (highest points) 
+        if (players.length > 0) {
+          const star = players.reduce((top, p) => p.points > top.points ? p : top, players[0]); 
+          //Determine the top stat for accolade 
+          let accolade = ""; 
+          if (star.goals >= star.assists && star.goals >= star.saves){
+            accolade = "Striker";
+          } else if (star.assists >= star.gaols && star.assists >= star.saves){
+            accolade = "Playermaker";
+          } else if (star.saves >= star.goals && star.saves >= star.assists){
+            accolade = "Guardian";
+          }
+          
+          document.getElementById("star-player-container").innerHTML = `
+            <strong>${star.player}</strong><br>
+            <strong>Accolade: ${accolade} (${star.points} points)</strong><br>
+            Goals: ${star.goals}, Assists: ${star.assists}, Saves: ${star.saves}
+          `;
+      } else {
+        document.getElementById("star-player-container").innerHTML = "No player data found for Knights.";
+      }
       });
   </script>
 </body>
