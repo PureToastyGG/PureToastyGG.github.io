@@ -6,57 +6,44 @@
   <title>Team Knights Stats Page</title>
   <style>
     :root {
-      --primary-color: #f91515; /* Edit this to change primary color */
-      --secondary-color: #bbbbbb; /* Edit this to change background color */
+      --primary-color: #f91515;
+      --secondary-color: #bbbbbb;
       --text-color: #222222;
     }
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: var(--secondary-color);
       color: var(--text-color);
     }
-
     header {
       background-color: var(--primary-color);
       padding: 20px;
       text-align: center;
     }
-
     header img {
       max-height: 250px;
     }
-
     main {
       padding: 20px;
     }
-
     section {
       margin-bottom: 40px;
     }
-
     h2 {
       color: var(--primary-color);
       border-bottom: 2px solid var(--primary-color);
       padding-bottom: 5px;
     }
-
-    .match {
+    .match, .player {
       margin-bottom: 15px;
     }
-
-    .player {
-      margin-bottom: 15px;
-    }
-
     .video-link {
       display: inline-block;
       margin-top: 5px;
       color: var(--primary-color);
       text-decoration: none;
     }
-
     .video-link:hover {
       text-decoration: underline;
     }
@@ -84,32 +71,55 @@
 
     <section id="player-stats">
       <h2>Player Stats</h2>
-      <div class="player">
-        <strong>Gatman40</strong><br>
-        Goals: 4<br>
-        Assists: 2<br>
-        Saves: 4
-      </div>
-      <div class="player">
-        <strong>BurlierPython43</strong><br>
-        Goals: 3<br>
-        Assists: 3<br>
-        Saves: 2
-      </div>
-      <div class="player">
-        <strong>tnevjr</strong><br>
-        Goals: 3<br>
-        Assists: 0<br>
-        Saves: 0
-      </div>
+      <div id="stats-container"></div>
     </section>
 
-    <section id="player-stats">
-        <h2>Star Player</h2>
-        <div class="player">
-          <strong>Gatman40</strong><br> 
-          <strong>Accolade: Striker (4 goals)</strong><br>
-      </section>
+    <section id="star-player">
+      <h2>Star Player</h2>
+      <div class="player" id="star-player-container"></div>
+    </section>
   </main>
+
+  <script>
+    const teamName = "Knights"; // Adjust this per team page
+
+    fetch("Raw Scarab Series stats - Week 1.csv")
+      .then(response => response.text())
+      .then(csv => {
+        const lines = csv.trim().split("\n");
+        const headers = lines[0].split(",");
+
+        const players = lines.slice(1)
+          .map(line => line.split(","))
+          .filter(row => row[0].trim() === teamName)
+          .map(row => ({
+            team: row[0],
+            player: row[1],
+            goals: parseInt(row[2], 10),
+            assists: parseInt(row[3], 10),
+            saves: parseInt(row[4], 10)
+          }));
+
+        const container = document.getElementById("stats-container");
+        players.forEach(p => {
+          const div = document.createElement("div");
+          div.className = "player";
+          div.innerHTML = `
+            <strong>${p.player}</strong><br>
+            Goals: ${p.goals}<br>
+            Assists: ${p.assists}<br>
+            Saves: ${p.saves}
+          `;
+          container.appendChild(div);
+        });
+
+        // Optional: Determine Star Player (highest goals)
+        const star = players.reduce((top, p) => p.goals > top.goals ? p : top, players[0]);
+        document.getElementById("star-player-container").innerHTML = `
+          <strong>${star.player}</strong><br>
+          <strong>Accolade: Striker (${star.goals} goals)</strong><br>
+        `;
+      });
+  </script>
 </body>
 </html>
