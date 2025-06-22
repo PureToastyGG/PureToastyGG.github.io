@@ -83,7 +83,7 @@
   <script>
     const teamName = "Knights"; // Adjust this per team page
 
-    fetch("TSS Stats.csv")
+    fetch("TSS_Stats.csv.xlsx")
       .then(response => response.text())
       .then(csv => {
         const lines = csv.trim().split("\n");
