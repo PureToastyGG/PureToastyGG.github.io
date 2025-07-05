@@ -25,11 +25,11 @@
                         const select = document.getElementById('playerSelect');
                         select.innerHTML = '';
                         results.data.forEach(row => {
-                            if (row.player) {
+                            if (row.Player) {
                                 players[row.player] = row;
                                 const option = document.createElement('option');
-                                option.value = row.player;
-                                option.textContent = row.player;
+                                option.value = row.Player;
+                                option.textContent = row.Player;
                                 select.appendChild(option);
                             }
                         });
@@ -46,12 +46,12 @@
             const info = players[selected];
             if (info) {
                 document.getElementById('playerInfo').innerHTML =
-                    `<h2>${info.player}</h2>
-                    <p>Team: ${info.team}</p>
-                    <p>Points: ${info.points}</p>
-                    <p>Goals: ${info.goals}</p>
-                    <p>Assists: ${info.assists}</p>
-                    <p>Saves: ${info.saves}</p>`;
+                    `<h2>${info.Player}</h2>
+                    <p>Team: ${info.Team}</p>
+                    <p>Points: ${info.Points}</p>
+                    <p>Goals: ${info.Goals}</p>
+                    <p>Assists: ${info.Assists}</p>
+                    <p>Saves: ${info.Saves}</p>`;
             } else {
                 document.getElementById('playerInfo').innerHTML = '';
             }
