@@ -97,6 +97,17 @@
     a:hover {
       text-decoration-thickness: 2px;
     }
+
+    .side-by-side {
+      display: flex;
+      gap: 2em;
+      justify-content: center;
+    }
+
+    .side-by-side section {
+      flex: 1;
+      min-width: 250px;
+    }
   </style>
 </head>
 <body>
@@ -118,11 +129,12 @@
   <main>
     <h1>The Scarab Series</h1>
     <h2>Season 0</h2>
+
+  <div class="side-by-side">
     <section>
       <h2>News</h2>
-      <p><strong>Week 2 Update:</strong> Week two just ended with a lot of exciting matchups so here's the summary. Knights(1) won against Cyclones(6) breaking away in the second game. Dragons(4) came back after losing the first game against the Monarchs(5). Kodiaks(3) were able to beat Phantoms(2) after two very close games. Other housekeeping update is leaderboards are going to be based on stats per game so there is no advantage to playing a third game.</p>
+      <p>...</p>
     </section>
-
     <section>
       <h2>Last Week's Matchups</h2>
       <ul>
@@ -131,15 +143,8 @@
         <li>Dragons Versus Phantoms: 0 - 2</li>
       </ul>
     </section>
+  </div>
 
-    <section>
-      <h2>This Week's Matchups</h2>
-      <ul>
-        <li>Knights(1) Versus Cyclones(6): 2 - 0</li>
-        <li>Dragons(4) Versus Monarchs(5): 2 - 1</li>
-        <li>Phantoms(2) Versus Kodiaks(3): 0 - 2</li>
-      </ul>
-    </section>
 
     <!-- <section>
       <h2>Play of the Week</h2>
@@ -149,43 +154,25 @@
       </video>
     </section> -->
 
-    <section class="leaderboards">
-      <div>
-        <h2>Best Scorers (PPG)</h2>
-        <ul>
-          <li>BurlierPython43 - 1.75</li>
-          <li>Jarzy - 1.75</li>
-          <li>PureToastyGG - 1.60</li>
-        </ul>
-      </div>
 
-      <div>
-        <h2>Best Defense (SPG)</h2>
-        <ul>
-          <li>Madbrash2 - 2.50</li>
-          <li>Jarzy - 2</li>
-          <li>ButterMonkey2013 - 1.60</li>
-        </ul>
-      </div>
-
-      <div>
-        <h2>Best Passers (APG)</h2>
-        <ul>
-          <li>Gatman40 - 0.75</li>
-          <li>BurlierPython43 - 0.75</li>
-          <li>pHD Squirtle - 0.75</li>
-        </ul>
-      </div>
-    </section>
-
+  <div class="side-by-side">
     <section>
-      <h2>Top 3 Teams</h2>
+      <h2>Last Weeks Stars</h2>
       <ul>
-        <li><a href="Knights_Stats.html">Knights</a>: 2 - 0</li>
-        <li><a href="Kodiaks_Stats.html">Kodiaks</a>: 2 - 0</li>
-        <li><a href="Phantoms_Stats.html">Phantoms</a>: 1 - 1</li>
+        <li>Best Striker - BurlierPython43 (Knights): 7 Goals</li>
+        <li>Best Gaurdian - Madbrash2 (Cyclones): 10 Saves</li>
+        <li>Best Playmaker - pHD Squirtle (Kodiaks): 3 Assists</li>
       </ul>
     </section>
+    <section>
+      <h2>Today's Top 3</h2>
+      <ul>
+        <li>Knights</li>
+        <li>Kodiaks</li>
+        <li>Phantoms</li>
+      </ul>
+    </section>
+  </div>
   </main>
 </body>
 </html>
