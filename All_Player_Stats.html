@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Player Information</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+    <select id="playerSelect"></select>
+    <div id="playerInfo"></div>
+
+    <script>
+        let players = {};
+
+        // Replace this URL with the raw URL to your CSV file in your GitHub repo
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTFSfsN0j7nIfzYdwnkS_i1-Ydzvykg65MhlzB0zGw_gAwZDwlbjfFYTBkRCLoRiuhT2jD4RfFv4nad/pub?gid=0&single=true&output=csv';
+
+        fetch(csvUrl)
+            .then(response => response.text())
+            .then(csvText => {
+                Papa.parse(csvText, {
+                    header: true,
+                    complete: function(results) {
+                        players = {};
+                        const select = document.getElementById('playerSelect');
+                        select.innerHTML = '';
+                        results.data.forEach(row => {
+                            if (row.player) {
+                                players[row.player] = row;
+                                const option = document.createElement('option');
+                                option.value = row.player;
+                                option.textContent = row.player;
+                                select.appendChild(option);
+                            }
+                        });
+                        if (select.options.length > 0) {
+                            select.selectedIndex = 0;
+                            select.dispatchEvent(new Event('change'));
+                        }
+                    }
+                });
+            });
+
+        document.getElementById('playerSelect').addEventListener('change', function() {
+            const selected = this.value;
+            const info = players[selected];
+            if (info) {
+                document.getElementById('playerInfo').innerHTML =
+                    `<h2>${info.player}</h2>
+                    <p>Team: ${info.team}</p>
+                    <p>Points: ${info.points}</p>
+                    <p>Goals: ${info.goals}</p>
+                    <p>Assists: ${info.assists}</p>
+                    <p>Saves: ${info.saves}</p>`;
+            } else {
+                document.getElementById('playerInfo').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
