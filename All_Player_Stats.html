@@ -52,13 +52,13 @@
         const info = players[selected];
         if (info) {
             document.getElementById('playerInfo').innerHTML =
-                `<h2>${info.player}</h2>
-                <p>Stars: ${info.stars}</p>
+                `<h2>${info.stars} Star ${info.accoalde} ${info.player}</h2>
                 <p>Team: ${info.team}</p>
-                <p>Points: ${info.points}</p>
-                <p>Goals: ${info.goals}</p>
-                <p>Assists: ${info.assists}</p>
-                <p>Saves: ${info.saves}</p>`;
+                <p>Average Score Per Game: ${info.ppg}</p>
+                <p>Average Goals Per Game: ${info.gpd}</p>
+                <p>Average Assists Per Game: ${info.apg}</p>
+                <p>Average Saves Per Game: ${info.spg}</p>
+                <p>Games Played: ${info.games}</p>`;
         } else {
             document.getElementById('playerInfo').innerHTML = '';
         }
