@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Team Info</title>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <style>
+        body {
+            transition: background 0.3s, color 0.3s;
+            font-family: Arial, sans-serif;
+        }
+        #teamInfo {
+            margin-top: 2em;
+            padding: 1em;
+            border-radius: 10px;
+            background: #f0f0f0;
+        }
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <label for="teamSelect">Select Team:</label>
+    <select id="teamSelect"></select>
+    <div id="teamInfo"></div>
+
+    <script>
+        let teams = {};
+
+        // Replace with your published Google Sheet CSV URL
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTbr9nU0HyCW9pafn8uzU9qVLrXkQGBJ3spO4tVFb9_Rf0NvaBCfyil6Gs04t6TZh1JQ5utkjg_z0vG/pub?gid=0&single=true&output=csv';
+
+        fetch(csvUrl)
+            .then(response => response.text())
+            .then(csvText => {
+                Papa.parse(csvText, {
+                    header: true,
+                    complete: function(results) {
+                        const select = document.getElementById('teamSelect');
+                        select.innerHTML = '';
+                        results.data.forEach(row => {
+                            // Normalize keys
+                            const normalized = {};
+                            Object.keys(row).forEach(key => {
+                                normalized[key.trim().toLowerCase()] = row[key];
+                            });
+                            if (normalized.team) {
+                                teams[normalized.team] = normalized;
+                                const option = document.createElement('option');
+                                option.value = normalized.team;
+                                option.textContent = normalized.team;
+                                select.appendChild(option);
+                            }
+                        });
+                        if (select.options.length > 0) {
+                            select.selectedIndex = 0;
+                            select.dispatchEvent(new Event('change'));
+                        }
+                    }
+                });
+            });
+
+        document.getElementById('teamSelect').addEventListener('change', function() {
+            const selected = this.value;
+            const info = teams[selected];
+            if (info) {
+                // Change background and text color based on team color
+                document.body.style.background = info.color || "#fff";
+                document.body.style.color = "#222"; // You can adjust this for contrast
+
+                document.getElementById('teamInfo').innerHTML =
+                    `<h1>${info.team}</h1> 
+                    <h2>Owned By: ${info.owner}</h2>
+                    <p><strong>Money:</strong> ${info.money}</p>
+                    <p><strong>Players:</strong> ${info.players}</p>
+                    <p><strong>Record:</strong> ${info.record}</p>
+                    <p><strong>Championships Won:</strong> ${info.championships}</p>`;
+            } else {
+                document.getElementById('teamInfo').innerHTML = '';
+            }
+        });
+    </script>
+</body>
+</html>
